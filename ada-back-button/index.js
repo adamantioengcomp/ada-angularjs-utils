@@ -1,0 +1,1 @@
+require('./ada-back-button');
