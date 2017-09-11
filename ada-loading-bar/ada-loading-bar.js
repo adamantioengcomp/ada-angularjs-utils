@@ -1,4 +1,4 @@
-window.loadingBar = require('angular').module('ada-loading-bar',[]);
+var loadingBar = require('angular').module('ada-loading-bar',[]);
 loadingBar.factory('LoadingBar',function($q){
 
 	var running = false;
@@ -42,13 +42,6 @@ loadingBar.factory('LoadingBar',function($q){
 	
 }).directive('loading', function(){
 
-	var script = document.querySelector("[src$='loading-bar.js']");	
-
-	if (!script) console.error("loading-bar.js file not found");
-
-	var currentScriptPath = script.src;
-
-	console.error();
 
 	return {
 		restrict: 'E',
@@ -56,6 +49,8 @@ loadingBar.factory('LoadingBar',function($q){
 			msg:'@message',
 			icon:'=icon',
 		},
-		templateUrl:currentScriptPath.replace('loading-bar.js', 'loading-bar.html')
+		templateUrl:require('./ada-loading-bar.html')
 	};
 });
+
+module.exports = loadingBar;

@@ -1,5 +1,5 @@
  
-utils = require('angular').module('utils',[]);
+var utils = require('angular').module('ada-utils',[]);
 
 /**
  * Filter for capitalize input strings
@@ -393,7 +393,6 @@ utils.directive('rollTopButton', ['$window', function ($window) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            element.fadeOut();
             $(window).scroll(function () {
                 if ($(this).scrollTop() > 300) {
                     element.fadeIn();
@@ -546,3 +545,5 @@ utils.factory('dateUtils',function(){
    };
 
 });
+
+module.exports = utils;
