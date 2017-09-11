@@ -14,7 +14,8 @@ require('angular').module('history',[])
 				backTo : function(url,params){
 					status.goingBack = true;
 					for (var i in history){
-						if (history[i].slice(0,history[i].indexOf("?")) == url){
+						var index = history[i].indexOf("?");
+						if (history[i].slice(0,(index > -1) ? index : undefined) == url){
 							status.current = i;
 							var prevUrl = history[i];
 							//var prevUrl = url;
