@@ -22,7 +22,7 @@ dialogs.provider('dialogs', [function () {
 		};
 	};
 
-	this.$get = ['$q', '$translate','$mdDialog', function ($q, $translate, $mdDialog) {
+	this.$get = ['$q', '$translate', '$mdDialog', function ($q, $translate, $mdDialog) {
 
 
 		var resolveTranslation = function (msg) {
@@ -41,7 +41,16 @@ dialogs.provider('dialogs', [function () {
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.alert), 'OK');
 				} else {
-					alert(msg);
+					$mdDialog.show(
+						$mdDialog.alert()
+							.clickOutsideToClose(false)
+							.title(resolveTranslation(dialogTitles.alert))
+							.textContent(msg)
+							.ariaLabel(resolveTranslation(dialogTitles.alert))
+							.ok('OK')
+					).then(async function () {
+						deferred.resolve();
+					})
 				}
 				return deferred.promise;
 			},
@@ -51,7 +60,16 @@ dialogs.provider('dialogs', [function () {
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.error), 'OK');
 				} else {
-					alert(msg);
+					$mdDialog.show(
+						$mdDialog.alert()
+							.clickOutsideToClose(false)
+							.title(resolveTranslation(dialogTitles.error))
+							.textContent(msg)
+							.ariaLabel(resolveTranslation(dialogTitles.error))
+							.ok('OK')
+					).then(async function () {
+						deferred.resolve();
+					})
 				}
 				return deferred.promise;
 			},
@@ -61,7 +79,16 @@ dialogs.provider('dialogs', [function () {
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.info), 'OK');
 				} else {
-					alert(msg);
+					$mdDialog.show(
+						$mdDialog.alert()
+							.clickOutsideToClose(false)
+							.title(resolveTranslation(dialogTitles.info))
+							.textContent(msg)
+							.ariaLabel(resolveTranslation(dialogTitles.info))
+							.ok('OK')
+					).then(async function () {
+						deferred.resolve();
+					})
 				}
 				return deferred.promise;
 			},
