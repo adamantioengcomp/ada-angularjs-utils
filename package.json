@@ -1,6 +1,11 @@
 {
+
   "name": "@adamantio/ada-angularjs-utils",
-  "version": "1.0.1",
+  
+
+  "name": "ada-angularjs-utils",
+  "version": "1.0.2-alpha",
+
   "description": "",
   "main": "index.js",
   "scripts": {
