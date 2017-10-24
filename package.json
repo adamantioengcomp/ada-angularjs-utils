@@ -1,5 +1,5 @@
 {
-  "name": "ada-angularjs-utils",
+  "name": "@adamantio/ada-angularjs-utils",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
