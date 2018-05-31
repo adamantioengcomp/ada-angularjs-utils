@@ -1,7 +1,7 @@
 require('angular').module('history', [])
 	.value('history', [])
 	.value('status', { current: -1, goingBack: false, goingForward: false })
-	.factory('History', ['history', '$location', 'status', function (history, $location, status) {
+	.factory('History', ['history', '$location', 'status','localStorageService', function (history, $location, status, localStorageService) {
 
 		return {
 
@@ -55,7 +55,15 @@ require('angular').module('history', [])
 			 */
 			back: function (params) {
 				status.goingBack = true;
-				(status.current > 0) ? status.current-- : status.current = 0;
+
+				//Se não houver nenhuma url na pilha, utiliza o voltar do navegador
+				if(status.current == 0){
+					return window.history.back();
+				}
+
+
+				(status.current > 0) ? status.current-- : status.current = 0;				
+
 				var prevUrl = history.length > 0 ? history[status.current] : "/";
 
 				for (i in params) {
@@ -99,7 +107,7 @@ require('angular').module('history', [])
 		};
 
 	}])
-	.run(['$rootScope', 'history', '$location', 'status', '$transitions',function ($rootScope, history, $location, status,$transitions) {
+	.run(['$rootScope', 'history', '$location', 'status', '$transitions','localStorageService',function ($rootScope, history, $location, status,$transitions,localStorageService) {
 
 		var changeEvent = function () {
 			if (!status.goingBack && !status.goingForward) {
@@ -120,7 +128,7 @@ require('angular').module('history', [])
 			changeEvent();
 		});
 
-		$transitions.onSuccess({}, function () {
+		$transitions.onSuccess({}, function () {			
 			changeEvent();
 		});
 
