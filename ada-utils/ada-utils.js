@@ -423,7 +423,7 @@ utils.directive('scrollDownFixed', ['$window', function ($window) {
                         'md-tabs.md-tab-fixed-top > md-tabs-wrapper,'+
                         'md-toolbar.md-tab-fixed-top {'+
                             'top: 0;'+
-                            'position: fixed;'+
+                            'position: fixed; '+
                             'right: 0;'+
                             'z-index: 1030;'+
                             'left: 0;'+
@@ -432,6 +432,10 @@ utils.directive('scrollDownFixed', ['$window', function ($window) {
             }
             element.removeClass('md-tab-fixed-top');
             $(window).scroll(function () {
+                if(!element.position){
+                    element = $("#"+element[0].id);
+                }
+
                 if (!scope.scrolltop)
                     scope.scrolltop = element.position().top  + element.offset().top;
                 if ($(this).scrollTop() > scope.scrolltop) {
