@@ -1,6 +1,6 @@
 {
   "name": "@adamantio/ada-angularjs-utils",
-  "version": "1.0.6",
+  "version": "1.0.7",
 
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "jquery": "3.2.1",
-    "angular": "1.5.3"
+    "angular": "1.5.8"
   },
   "keywords": [],
   "author": "",
