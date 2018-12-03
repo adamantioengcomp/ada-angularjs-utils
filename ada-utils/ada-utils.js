@@ -6,7 +6,7 @@ var utils = require('angular').module('ada-utils',[]);
  */
 utils.filter('capitalize', function(){
     return function(input){
-        if (!input || !input.charAt || !input.toLowerCase) 
+        if (!input || (typeof input != 'string')) 
             return undefined
         else
             return input.charAt(0).toUpperCase() + input.toLowerCase().slice(1);
