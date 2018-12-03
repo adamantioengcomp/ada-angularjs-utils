@@ -36,7 +36,7 @@ dialogs.provider('dialogs', [function () {
 
 		return {
 
-			alert: function (msg) {
+			alert: function (msg,multiple) {
 				var deferred = $q.defer();
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.alert), 'OK');
@@ -46,6 +46,7 @@ dialogs.provider('dialogs', [function () {
 							.clickOutsideToClose(false)
 							.title(resolveTranslation(dialogTitles.alert))
 							.textContent(msg)
+							.multiple(multiple||false)
 							.ariaLabel(resolveTranslation(dialogTitles.alert))
 							.ok('OK')
 					).then(async function () {
@@ -55,7 +56,7 @@ dialogs.provider('dialogs', [function () {
 				return deferred.promise;
 			},
 
-			error: function (msg) {
+			error: function (msg,multiple) {
 				var deferred = $q.defer();
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.error), 'OK');
@@ -65,6 +66,7 @@ dialogs.provider('dialogs', [function () {
 							.clickOutsideToClose(false)
 							.title(resolveTranslation(dialogTitles.error))
 							.textContent(msg)
+							.multiple(multiple||false)
 							.ariaLabel(resolveTranslation(dialogTitles.error))
 							.ok('OK')
 					).then(async function () {
@@ -74,7 +76,7 @@ dialogs.provider('dialogs', [function () {
 				return deferred.promise;
 			},
 
-			info: function (msg) {
+			info: function (msg,multiple) {
 				var deferred = $q.defer();
 				if (navigator.notification) {
 					navigator.notification.alert(msg, function () { deferred.resolve(); }, resolveTranslation(dialogTitles.info), 'OK');
@@ -84,6 +86,7 @@ dialogs.provider('dialogs', [function () {
 							.clickOutsideToClose(false)
 							.title(resolveTranslation(dialogTitles.info))
 							.textContent(msg)
+							.multiple(multiple||false)
 							.ariaLabel(resolveTranslation(dialogTitles.info))
 							.ok('OK')
 					).then(async function () {
@@ -93,7 +96,7 @@ dialogs.provider('dialogs', [function () {
 				return deferred.promise;
 			},
 
-			confirm: function (msg, btOkName, btCancelName) {
+			confirm: function (msg, btOkName, btCancelName, multiple) {
 				var deferred = $q.defer();
 
 				if (!btOkName) {
@@ -124,7 +127,8 @@ dialogs.provider('dialogs', [function () {
 						.textContent(msg)
 						.ariaLabel(resolveTranslation(dialogTitles.confirm))
 						.ok(btOkName)
-						.cancel(btCancelName);
+						.cancel(btCancelName)
+						.multiple(multiple||false);
 
 					$mdDialog.show(confirm).then(
 						async function () {
