@@ -114,8 +114,8 @@ require('angular').module('history', [])
 				//history.push($location.$$url);
 				status.current++;
 
-				//Evita entradas repetidas
-				if(history.indexOf($location.$$url) > -1) return;
+				//Evita entradas repetidas em sequencia
+				if(history[status.current-1] && (history[status.current-1] == $location.$$url)) return;
 
 				history[status.current] = $location.$$url;
 			} else {
