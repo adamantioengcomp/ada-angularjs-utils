@@ -113,6 +113,10 @@ require('angular').module('history', [])
 			if (!status.goingBack && !status.goingForward) {
 				//history.push($location.$$url);
 				status.current++;
+
+				//Evita entradas repetidas em sequencia
+				if(history[status.current-1] && (history[status.current-1] == $location.$$url)) return;
+
 				history[status.current] = $location.$$url;
 			} else {
 				status.goingBack = false;
