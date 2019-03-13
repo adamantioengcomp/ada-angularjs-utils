@@ -40,7 +40,7 @@ loadingBar.factory('LoadingBar',['$q',function($q){
 		}
 	};
 	
-}).directive('loading', function(){
+}]).directive('loading', function(){
 
 
 	return {
@@ -51,6 +51,6 @@ loadingBar.factory('LoadingBar',['$q',function($q){
 		},
 		templateUrl:require('./ada-loading-bar.html')
 	};
-}]);
+});
 
 module.exports = loadingBar;
