@@ -1,5 +1,5 @@
 var loadingBar = require('angular').module('ada-loading-bar',[]);
-loadingBar.factory('LoadingBar',function($q){
+loadingBar.factory('LoadingBar',['$q',function($q){
 
 	var running = false;
 
@@ -51,6 +51,6 @@ loadingBar.factory('LoadingBar',function($q){
 		},
 		templateUrl:require('./ada-loading-bar.html')
 	};
-});
+}]);
 
 module.exports = loadingBar;
