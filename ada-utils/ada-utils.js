@@ -4,7 +4,7 @@ var utils = require('angular').module('ada-utils',[]);
 /**
  * Filter for capitalize input strings
  */
-utils.filter('capitalize', function(){
+utils.filter('capitalize', [function(){
     return function(input){
         if (!input || (typeof input != 'string')) 
             return undefined
@@ -12,7 +12,7 @@ utils.filter('capitalize', function(){
             return input.charAt(0).toUpperCase() + input.toLowerCase().slice(1);
 
     };
-});
+}]);
 
 
 /**
@@ -21,7 +21,7 @@ utils.filter('capitalize', function(){
  * @param {Number} size the desired size for the string
  * @param {boolean|undefined} append if informed, the characters will be added to the end of the string instead of the start 
  */
-utils.filter('pad', function(){
+utils.filter('pad', [function(){
     return function(input, char, size, append){
         var pad = input;
         for (var i = 0; i < size; i++){
@@ -35,7 +35,7 @@ utils.filter('pad', function(){
         else
             return pad.slice(pad.length-size,pad.length);
     };
-});
+}]);
 
 /**
  * Similar to Angular OrderBy filter, but keeps the original input when filter = '' or undefined
@@ -129,7 +129,7 @@ utils.directive('selectOnFocus', ['$window', function ($window) {
 /**
  * Directive that creates a currency input
  */
-utils.directive('currencyInput', function() {
+utils.directive('currencyInput', [function() {
     return {
         restrict: 'A',
         scope: {
@@ -198,12 +198,12 @@ utils.directive('currencyInput', function() {
 
         }
     };
-});
+}]);
 
 /**
  * Directive that creates a decimal formating input
  */
-utils.directive('decimalInput', function() {
+utils.directive('decimalInput', [function() {
     return {
         restrict: 'A',
         scope: {
@@ -269,7 +269,7 @@ utils.directive('decimalInput', function() {
 
         }
     };
-});
+}]);
 
 /**
  * When initializing the view, sets the focus to the input marked with this directive
@@ -291,7 +291,7 @@ utils.directive('autoFocus', ['$timeout',function($timeout) {
 /**
  * Service with utilities
  */
-utils.factory('utils',function(){
+utils.factory('utils',[function(){
 
    return new function(){
         var self = this;
@@ -335,7 +335,7 @@ utils.factory('utils',function(){
         };        
    };
 
-});
+}]);
 
 /**
  * The element marked with this directive will scroll the page to the element passed as parameter (selector)
@@ -452,7 +452,7 @@ utils.directive('scrollDownFixed', ['$window', function ($window) {
 /**
  * Service with utilities
  */
-utils.factory('dateUtils',function(){
+utils.factory('dateUtils',[function(){
 
    return new function(){
         var self = this;
@@ -548,6 +548,6 @@ utils.factory('dateUtils',function(){
         };
    };
 
-});
+}]);
 
 module.exports = utils;

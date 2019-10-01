@@ -49,7 +49,7 @@ loadingBar.factory('LoadingBar',['$q',function($q){
 			msg:'@message',
 			icon:'=icon',
 		},
-		templateUrl:require('./ada-loading-bar.html')
+		template:require('./ada-loading-bar.html')
 	};
 });
 
