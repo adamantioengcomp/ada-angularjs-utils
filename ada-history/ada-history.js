@@ -62,7 +62,7 @@ require('angular').module('history', [])
 			 *				   change/add params of the target url before goes back.
 			 *				   must be displayed as a key/value pair
 			 */
-			back: function (params) {
+			back: function (params,pageName) {
 				status.goingBack = true;
 
 				//Se não houver nenhuma url na pilha, utiliza o voltar do navegador
@@ -93,7 +93,16 @@ require('angular').module('history', [])
 					}
 				}
 
-				window.location = "#" + prevUrl;
+				if (pageName) {
+					if (!prevUrl) {
+						window.location = `/${pageName}/#/`
+					} else {
+						window.location = `/${pageName}/#${prevUrl}`
+					}
+					
+				} else {
+					window.location = "#" + prevUrl;
+				}
 			},
 
 			/**
