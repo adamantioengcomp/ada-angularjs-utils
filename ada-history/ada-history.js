@@ -11,7 +11,7 @@ require('angular').module('history', [])
 			 *				   change/add params of the target url before goes back.
 			 *				   must be displayed as a key/value pair
 			 */
-			backTo: function (url, params) {
+			backTo: function (url, params,pageName) {
 				status.goingBack = true;
 				for (var i in history) {
 					var index = history[i].indexOf("?");
@@ -44,7 +44,16 @@ require('angular').module('history', [])
 					}
 				}
 
-				window.location = "#" + prevUrl;
+				if (pageName) {
+					if (!prevUrl) {
+						window.location = `/${pageName}/#/`
+					} else {
+						window.location = `/${pageName}/#${prevUrl}`
+					}
+					
+				} else {
+					window.location = "#" + prevUrl;
+				}
 			},
 
 			/**
