@@ -82,7 +82,6 @@ backButton = require('angular').module('ada-back-button',[])
 				 * Executes the back buton callback programatically
 				 */
 				executeBackButtonCallback : function(){
-					debugger;
 					//Primeiro executa os callbacks globais, na ordem em que foram registrados
 					//Mas se algum retornar 'true', interrompe a corrente
 					for (var i in globalCallbacks){
