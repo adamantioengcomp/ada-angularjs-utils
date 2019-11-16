@@ -46,9 +46,9 @@ require('angular').module('history', [])
 
 				if (pageName) {
 					if (!prevUrl) {
-						window.location = `/${pageName}/#/`
+						window.location = `${pageName}/#/`
 					} else {
-						window.location = `/${pageName}/#${prevUrl}`
+						window.location = `${pageName}/#${prevUrl}`
 					}
 					
 				} else {
