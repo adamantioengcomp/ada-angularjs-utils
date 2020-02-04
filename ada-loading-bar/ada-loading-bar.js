@@ -37,7 +37,14 @@ loadingBar.factory('LoadingBar',['$q',function($q){
 		toggle : function(){
 			running = !running;
 			$("#loading").modal('toggle');
-		}
+		},
+
+		/**
+		 * Checks if LoadingBar is running
+		 */ 
+		isRunning:function(){
+			return running;
+		},
 	};
 	
 }]).directive('loading', function(){
