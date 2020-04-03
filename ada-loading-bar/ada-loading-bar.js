@@ -56,16 +56,16 @@ loadingBar.factory('LoadingBar',['$q',function($q){
 			msg:'@message',
 			icon:'=icon',
 		},
-		template:`<div id="loading" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" >\
-			<div class="modal-dialog text-center">\
-				<div class="modal-content">\
-					<div class="modal-body text-center">\
-						<i class="fa {{icon ? icon : 'fa-spinner'}} fa-5x fa-spin"></i>\
-						</br>\
-						{{msg ? msg : 'Aguarde...'}}\
-					</div>\
-				</div>\
-			</div>\
+		template:`<div id="loading" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" >
+			<div class="modal-dialog text-center">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<i class="fa {{icon ? icon : 'fa-spinner'}} fa-5x fa-spin"></i>
+						</br>
+						{{msg ? msg : 'Aguarde...'}}
+					</div>
+				</div>
+			</div>
 		</div>`
 	};
 });
